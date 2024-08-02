@@ -1,12 +1,16 @@
-import Header from "@/components/header";
+import { FormProvider } from "@/components/formcontext";
+import List from "@/components/list";
+
 import "@/styles/global.scss";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <main role="main">
-        Form
+        <FormProvider>
+          <List>
+          </List>
+        </FormProvider>
       </main>
     </>
   );

@@ -1,8 +1,10 @@
+import Link from "next/link";
 import styles from "./header.module.scss";
 
 const Header: React.FC = () => {
   return (
     <header className={styles.container}>
+      <Link href="/">
       <svg
         width="153"
         height="40"
@@ -69,6 +71,7 @@ const Header: React.FC = () => {
           fill="#13126C"
         />
       </svg>
+      </Link>
     </header>
   );
 };

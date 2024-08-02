@@ -1,0 +1,41 @@
+@import "../styles/tokens.module";
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.circle {
+    $circleBase: $basePadding * 6;
+
+    background-color: $pansy;
+    border-radius: 50%;
+
+    color: $daisy;
+    text-align: center;
+    font-weight: 700;
+
+    width: $circleBase;
+    height: $circleBase;
+    line-height: $circleBase;
+}
+
+.title {
+    font-weight: 700;
+    margin: 0 0 0 $basePadding * 5;
+}
+
+.edit {
+    cursor: pointer;
+}
+
+.disabled {
+    & .circle {
+        color: $blacksage;
+        background-color: $mooncarrot;
+    }
+
+    & .title {
+        color: $blacksage;
+    }
+}

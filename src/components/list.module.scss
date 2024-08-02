@@ -1,0 +1,23 @@
+@import "../styles/tokens.module";
+
+.container {
+    width: 100%;
+    margin: $basePadding * 5 auto;
+
+    background-color: $daisy;
+
+
+
+    @media (min-width: $lg) {
+        width: 600px;
+        border-radius: $basePadding * 8;
+    }
+}
+
+.containerInner {
+    padding: $basePadding * 7;
+
+    &:first-of-type {
+        border-bottom: 1px solid $mooncarrot;
+    }
+}

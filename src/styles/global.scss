@@ -34,32 +34,15 @@ main {
     flex-grow: 1;
 }
 
-h1, h2, h3, h4, h5, dt {
+h1, h2, h3, h4 {
     line-height: 1.15;
+}
+h1, h2 {
     font-family: $headingFontFamily;
 }
 p {
     line-height: 1.5;
     color: $hellebore;
-}
-
-/*
- * Utilities
- **/
-.box {
-    margin: 0 auto;
-    text-align: center;
-    max-width: 375px;
-}
-.copy--large {
-    @extend h2;
-    font-weight: 700;
-    color: $pansy;
-}
-.label {
-    color: $blacksage;
-    letter-spacing: .2px; // should this be REMs?
-    font-weight: 700;
 }
 
 /*
@@ -70,7 +53,29 @@ p {
 h1, .h1 { font-size: 3.052rem; }
 h2, .h2 { font-size: 1.75rem; }
 h3, .h3 { font-size: 1.602rem; }
-h4, .h4 { font-size: 1.424rem; }
+h4, .h4 { font-size: 1.3rem; }
 p, .body { font-size: 1rem; }
-b { font-weight: 500}
+b, .strong { font-weight: 700}
 a { color: $hyacinth }
+
+/*
+ * Utilities
+ **/
+ .box {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 375px;
+}
+.copy--medium {
+    @extend h4;
+}
+.copy--large {
+    @extend h2;
+    font-weight: 700;
+    color: $pansy;
+}
+label, .label {
+    color: $blacksage;
+    letter-spacing: .2px; // should this be REMs?
+    font-weight: 700;
+}

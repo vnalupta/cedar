@@ -13,7 +13,9 @@ $hyacinth: #3667E9;
 $pansy: #13126C;
 $blacksage: #65657B;
 $hellebore: #171731;
+
 $marigold: #C34648;
+$hosta: green;
 
 :export {
     daisy : $daisy;
@@ -24,5 +26,12 @@ $marigold: #C34648;
     blacksage: $blacksage;
     hellebore : $hellebore;
     marigold : $marigold;
+    hosta: $hosta;
 }
 
+
+/*
+ * Responsive
+ **/
+ $sm: 640px;
+ $lg: 1024px;
