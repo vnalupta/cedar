@@ -16,7 +16,7 @@ const List: React.FC = () => {
     const inputs = useForm();
 
     // @ts-ignore
-    const formIsValid = inputs?.every(input => input.valid);
+    const formIsValid = inputs?.every((input) => input.valid);
 
     function handleOnContinueClick() {
         setStep(2);
@@ -37,20 +37,14 @@ const List: React.FC = () => {
                     onEditClick={handleEditClick}
                 />
 
-                <h1>hi</h1>
                 {inputs.map((input, ct) => (
-                    <p key={ct}>name: {input.name} | valid: {input.valid ? 'valid' : 'false'}</p>
+                    <p key={ct}>
+                        name: {input.name} | valid:{" "}
+                        {input.valid ? "valid" : "false"}
+                    </p>
                 ))}
 
-                {step === 1 && (
-                    <>
-                            <PaymentForm />
-
-                        <Button onClick={handleOnContinueClick}>
-                            Continue
-                        </Button>
-                    </>
-                )}
+                {step === 1 && <PaymentForm proceed={handleOnContinueClick} />}
             </div>
 
             <div className={styles.containerInner}>

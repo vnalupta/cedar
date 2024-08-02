@@ -15,11 +15,21 @@
     padding: $basePadding * 3;
     border-radius: $basePadding * 2;
     border: 0 none;
-}
-.input:valid {
-    outline: 1px solid $hosta;
+    outline: 1px solid $hellebore;
+    margin: $basePadding * 2 0 0 0;
 }
 
-.input:invalid {
-    outline: 1px solid $marigold;
+.sibling {
+    $gap: $basePadding * 3;
+    width: calc(50% - $gap);
+    float: left;
+    margin-right: $gap;
 }
+
+// .input:valid {
+//     outline: 1px solid $hosta;
+// }
+
+// .input:invalid {
+//     outline: 1px solid $marigold;
+// }

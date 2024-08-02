@@ -13,22 +13,32 @@ export function FormProvider({ children }: { children: React.ReactNode | React.R
             type: "REPLACE_STATE",
             payload: [
                 {
+                    label: "Card number",
+                    value: "",
                     name: "credit",
                     valid: false,
                 },
                 {
+                    label: "Expires (MM/YY)",
+                    value: "",
                     name: "expiration",
                     valid: false,
                 },
                 {
+                    label: "Security code (CVV)",
+                    value: "",
                     name: "security",
                     valid: false,
                 },
                 {
+                    label: "Name on card",
+                    value: "",
                     name: "name",
                     valid: false,
                 },
                 {
+                    label: "Zip code",
+                    value: "",
                     name: "zip",
                     valid: false,
                 },

@@ -4,10 +4,11 @@ import styles from "./input.module.scss";
 import { useFormDispatch } from "./formcontext";
 
 const Input: React.FC<{
+    id: number;
     name: string;
     label: string;
-}> = ({ name, label }) => {
-
+    showRequiredError: boolean;
+}> = ({ id, name, label, showRequiredError }) => {
     const dispatch = useFormDispatch();
 
     const [status, setStatus] = useState("initial"); // initial | valid | error
@@ -32,7 +33,7 @@ const Input: React.FC<{
     }
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${id === 1 ? styles.sibling : ''}`}>
             <label htmlFor={name}>{label}</label>
             {name === "credit" && (
                 <input
@@ -41,7 +42,7 @@ const Input: React.FC<{
                     inputMode="numeric"
                     pattern="[0-9\s]{13,19}"
                     maxLength={19}
-                    plapnceholder="xxxx xxxx xxxx xxxx"
+                    placeholder="xxxx xxxx xxxx xxxx"
                     required
                     onChange={inputChangeHandler}
                 />
@@ -97,7 +98,7 @@ const Input: React.FC<{
                 />
             )}
 
-            {value.length === 0 && status === "error" && (
+            {showRequiredError && (
                 <p className={styles.error}>This field is required</p>
             )}
         </div>
