@@ -13,6 +13,7 @@ import Icon from "@/components/icon";
 
 const List: React.FC = () => {
     const [step, setStep] = useState(1);
+    const [hideStep, setHideStep] = useState(false);
     const inputs = useForm();
 
     // @ts-ignore
@@ -20,10 +21,17 @@ const List: React.FC = () => {
 
     function handleOnContinueClick() {
         setStep(2);
+        setTimeout(() => {
+            setHideStep(true);
+        }, 100);
     }
 
     function handleEditClick() {
-        setStep(1);
+        setHideStep(false);
+
+        setTimeout(() => {
+            setStep(1);
+        }, 100);
     }
 
     return (
@@ -37,15 +45,14 @@ const List: React.FC = () => {
                     onEditClick={handleEditClick}
                 />
 
-                {/* {inputs.map((input, ct) => (
-                    <p key={ct}>
-                        name: {input.name} | valid:{" "}
-                        {input.valid ? "valid" : "false"} |
-                        {input.value}
-                    </p>
-                ))} */}
-
-                {step === 1 && <Form proceed={handleOnContinueClick} />}
+                <div
+                    className={`${styles.listItem} ${step === 1 ? `${styles.visible}` : `${styles.hidden}`}`}
+                    style={{
+                        display: hideStep ? "none" : "block",
+                    }}
+                >
+                    <Form proceed={handleOnContinueClick} />
+                </div>
             </div>
 
             <div className={styles.containerInner}>
@@ -55,30 +62,34 @@ const List: React.FC = () => {
                     title="Review and Pay"
                 />
 
-                {step === 2 && (
-                    <>
-                        <p className="copy--medium">
-                            You’re about to make a payment of{" "}
-                            <span className="strong">$600.00</span>
-                        </p>
-                        <p className={`${styles.paymentLabel} label`}>
-                            Payment method
-                        </p>
-                        <p className={styles.paymentDetails}>
-                            <span><Icon name="credit" /></span> Card ending in ••••4242
-                        </p>
-                        <Link
-                            href={{
-                                pathname: "/",
-                                query: {
-                                    completed: true,
-                                },
-                            }}
-                        >
-                            <Button buttonType="button">Pay $600</Button>
-                        </Link>
-                    </>
-                )}
+                {/* {step === 2 && ( */}
+                <div
+                    className={`${styles.listItem} ${step === 2 ? `${styles.visible}` : `${styles.hidden}`}`}
+                >
+                    <p className="copy--medium">
+                        You’re about to make a payment of{" "}
+                        <span className="strong">$600.00</span>
+                    </p>
+                    <p className={`${styles.paymentLabel} label`}>
+                        Payment method
+                    </p>
+                    <p className={styles.paymentDetails}>
+                        <span>
+                            <Icon name="credit" />
+                        </span>{" "}
+                        Card ending in ••••4242
+                    </p>
+                    <Link
+                        href={{
+                            pathname: "/",
+                            query: {
+                                completed: true,
+                            },
+                        }}
+                    >
+                        <Button buttonType="button">Pay $600</Button>
+                    </Link>
+                </div>
             </div>
         </section>
     );

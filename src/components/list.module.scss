@@ -35,3 +35,18 @@
         margin-right: $basePadding * 2
     }
 }
+
+.listItem {
+    // https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
+    height: auto;
+    transition: 300ms max-height ease-out, 250ms opacity ease-out;
+}
+.visible {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.hidden {
+    max-height: 0;
+    opacity: 0;
+}
