@@ -3,8 +3,8 @@ import styles from "./button.module.scss";
 
 const Button: React.FC<{
     children?: React.ReactNode,
-    onClick?: (e: React.FormEvent<HTMLFormElement>) => void,
-    onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void,
+    onClick?: (e: React.MouseEvent<HTMLElement>) => void,
+    onSubmit?: (e: React.FormEvent) => void,
     buttonType: 'submit' | 'reset' | 'button' | undefined;
     testid?: string
 }> = ({ children, onClick, onSubmit, buttonType = 'button', testid }) => {

@@ -12,7 +12,7 @@ const Form: React.FC<{
     const inputs = useForm();
     const [evaluated, setEvaluated] = useState(false);
 
-    function handleSubmit(e: ChangeEvent<HTMLInputElement>) {
+    function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
 
         setEvaluated(true);

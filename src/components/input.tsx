@@ -38,6 +38,7 @@ const Input: React.FC<{
     }
 
     function validator(value: string | number) {
+         // @ts-ignore
         const pattern = validPatternMap[name];
 
         return pattern.test(value);
@@ -47,6 +48,7 @@ const Input: React.FC<{
         const val = e.target.value;
         const matchesPattern = validator(val);
 
+         // @ts-ignore
         dispatch({
             type: "input_changed",
             name: name,
