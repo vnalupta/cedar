@@ -2,101 +2,76 @@ import { ChangeEvent, useState } from "react";
 import styles from "./input.module.scss";
 
 import { useFormDispatch } from "./formcontext";
+import { match } from "assert";
 
 const Input: React.FC<{
     id: number;
     name: string;
     label: string;
+    value: string;
+    valid: boolean;
     showRequiredError: boolean;
-}> = ({ id, name, label, showRequiredError }) => {
+}> = ({ id, name, label, value, valid, showRequiredError }) => {
     const dispatch = useFormDispatch();
 
-    const [status, setStatus] = useState("initial"); // initial | valid | error
-    const [value, setValue] = useState("");
+    const validPatternMap = {
+        credit: /[0-9\s]{13,19}/,
+        expiration: /[0-9\s]{4}/,
+        security: /[0-9\s]{3,4}/,
+        zip: /[0-9\s]{5}/,
+        name: /[a-zA-Z]/,
+    };
+
+    function maxLengthGenerator(name: string): number {
+        let maxLength = 512;
+
+        if (name === "credit") {
+            maxLength = 19;
+        } else if (name === "zip") {
+            maxLength = 5;
+        } else if (name === "security" || name === "expiration") {
+            maxLength = 4;
+        }
+
+        return maxLength;
+    }
+
+    function validator(value: string | number) {
+        const pattern = validPatternMap[name];
+
+        return pattern.test(value);
+    }
 
     function inputChangeHandler(e: ChangeEvent<HTMLInputElement>) {
-        setValue(e.target.value);
-
-        if (e.target.value.length === 5) {
-            setStatus("valid")
-        } else if (e.target.value.length === 0) {
-            setStatus("initial")
-        } else {
-            setStatus("error")
-        }
+        const val = e.target.value;
+        const matchesPattern = validator(val);
 
         dispatch({
             type: "input_changed",
             name: name,
-            valid: status === "valid"
-        })
+            value: val,
+            valid: matchesPattern
+        });
     }
 
     return (
-        <div className={`${styles.container} ${id === 1 ? styles.sibling : ''}`}>
+        <div
+            className={`${styles.container} ${id === 1 ? styles.sibling : ""}`}
+        >
             <label htmlFor={name}>{label}</label>
-            {name === "credit" && (
-                <input
-                    className={styles.input}
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9\s]{13,19}"
-                    maxLength={19}
-                    placeholder="xxxx xxxx xxxx xxxx"
-                    required
-                    onChange={inputChangeHandler}
-                />
-            )}
-
-            {/* expiration */}
-            {name === "expiration" && (
-                <input
-                    className={styles.input}
-                    name="expiration"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    required
-                    onChange={inputChangeHandler}
-                />
-            )}
-
-            {/* security */}
-            {name === "security" && (
-                <input
-                    className={styles.input}
-                    name="security"
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={4}
-                    pattern="[0-9]*"
-                    required
-                    onChange={inputChangeHandler}
-                />
-            )}
-
-            {/* name */}
-            {name === "name" && (
-                <input
-                    className={styles.input}
-                    name="name"
-                    type="text"
-                    required
-                    onChange={inputChangeHandler}
-                />
-            )}
-
-            {name === "zip" && (
-                <input
-                    className={styles.input}
-                    name="zip"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    required
-                    onChange={inputChangeHandler}
-                />
-            )}
+            <input
+                className={`
+                    ${value.length > 1 && valid ? `${styles.valid}` : ``}
+                    ${value.length > 1 && !valid ? `${styles.invalid}` : ``}
+                    ${styles.input}
+                `}
+                name={name}
+                type={`${name === "name" ? "text" : "numeric"}`}
+                value={value}
+                maxLength={maxLengthGenerator(name)}
+                onChange={inputChangeHandler}
+                required
+            />
 
             {showRequiredError && (
                 <p className={styles.error}>This field is required</p>

@@ -3,13 +3,12 @@
 import styles from "./list.module.scss";
 
 import { useState } from "react";
+import { useForm } from "@/components/formcontext";
 
-import ListHeader from "./list-header";
-import Button from "./button";
 import Link from "next/link";
-import PaymentForm from "./paymentform";
-
-import { useForm } from "./formcontext";
+import ListHeader from "@/components/list-header";
+import Button from "@/components/button";
+import Form from "@/components/form";
 
 const List: React.FC = () => {
     const [step, setStep] = useState(1);
@@ -37,14 +36,15 @@ const List: React.FC = () => {
                     onEditClick={handleEditClick}
                 />
 
-                {inputs.map((input, ct) => (
+                {/* {inputs.map((input, ct) => (
                     <p key={ct}>
                         name: {input.name} | valid:{" "}
-                        {input.valid ? "valid" : "false"}
+                        {input.valid ? "valid" : "false"} |
+                        {input.value}
                     </p>
-                ))}
+                ))} */}
 
-                {step === 1 && <PaymentForm proceed={handleOnContinueClick} />}
+                {step === 1 && <Form proceed={handleOnContinueClick} />}
             </div>
 
             <div className={styles.containerInner}>

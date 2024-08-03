@@ -26,10 +26,10 @@
     margin-right: $gap;
 }
 
-// .input:valid {
-//     outline: 1px solid $hosta;
-// }
+.input.valid {
+    outline: 1px solid $hosta;
+}
 
-// .input:invalid {
-//     outline: 1px solid $marigold;
-// }
+.input.invalid {
+    outline: 1px solid $marigold;
+}

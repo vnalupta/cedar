@@ -4,20 +4,23 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 
 import { useForm } from "@/components/formcontext";
+import { useState } from "react";
 
 const PaymentForm: React.FC<{
     proceed: () => void;
 }> = ({ proceed }) => {
     const inputs = useForm();
+    const [evaluated, setEvaluated] = useState(false);
 
     function handleSubmit() {
+        setEvaluated(true);
         // @ts-ignore
         const formIsValid = inputs?.every((input) => input.valid);
-        // check that all input values are length > 1
-        // if not, set error state
 
-        // if not error state
-        proceed();
+        if (formIsValid) {
+            setEvaluated(false);
+            proceed();
+        }
     }
 
     if (!inputs) {
@@ -33,25 +36,11 @@ const PaymentForm: React.FC<{
                     label={input.label}
                     name={input.name}
                     key={idx}
-                    showRequiredError
+                    value={input.value}
+                    valid={input.valid}
+                    showRequiredError={evaluated && input.value.length === 0}
                 />
             ))}
-            {/* {inputs && inputs.map((input, idx) => {(
-                <>
-                    <Input label={input.label} name={input.name} showRequiredError />
-                </>
-            )})} */}
-            {/* <Input label="Card number" name="credit" />
-
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <Input label="Expires (MM/YY)" name="expiration" />
-                <Input label="Security code (CVV)" name="security" />
-            </div>
-
-            <Input label="Name on card" name="name" />
-
-            <Input label="Zip code" name="zip" /> */}
-
             <Button onClick={handleSubmit}>Continue</Button>
         </form>
     );

@@ -19,7 +19,7 @@ export function FormProvider({ children }: { children: React.ReactNode | React.R
                     valid: false,
                 },
                 {
-                    label: "Expires (MM/YY)",
+                    label: "Expires (MMYY)",
                     value: "",
                     name: "expiration",
                     valid: false,
@@ -81,6 +81,7 @@ function inputsReducer(inputs, action) {
                     return {
                         ...input,
                         valid: action.valid,
+                        value: action.value
                     };
                 } else {
                     return input;
