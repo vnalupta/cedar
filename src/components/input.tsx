@@ -11,7 +11,8 @@ const Input: React.FC<{
     value: string;
     valid: boolean;
     showRequiredError: boolean;
-}> = ({ id, name, label, value, valid, showRequiredError }) => {
+    testid?: string;
+}> = ({ id, name, label, value, valid, showRequiredError, testid }) => {
     const dispatch = useFormDispatch();
 
     const validPatternMap = {
@@ -71,6 +72,7 @@ const Input: React.FC<{
                 value={value}
                 maxLength={maxLengthGenerator(name)}
                 onChange={inputChangeHandler}
+                data-testid={testid}
                 required
             />
             {value.length > 1 && (
@@ -82,7 +84,7 @@ const Input: React.FC<{
             </div>
 
             {showRequiredError && (
-                <p className={styles.error}>This field is required</p>
+                <p role="alert" className={styles.error}>This field is required</p>
             )}
         </div>
     );

@@ -1,4 +1,4 @@
-import styles from "./form.module.scss"
+import styles from "./form.module.scss";
 
 import Button from "@/components/button";
 import Input from "@/components/input";
@@ -6,7 +6,7 @@ import Input from "@/components/input";
 import { useForm } from "@/components/formcontext";
 import { ChangeEvent, useState } from "react";
 
-const PaymentForm: React.FC<{
+const Form: React.FC<{
     proceed: () => void;
 }> = ({ proceed }) => {
     const inputs = useForm();
@@ -40,12 +40,20 @@ const PaymentForm: React.FC<{
                     key={idx}
                     value={input.value}
                     valid={input.valid}
+                    testid={`pay-input-${input.name}`}
                     showRequiredError={evaluated && input.value.length === 0}
                 />
             ))}
-            <Button buttonType="submit" onClick={handleSubmit} onSubmit={handleSubmit}>Continue</Button>
+            <Button
+                buttonType="submit"
+                onClick={handleSubmit}
+                onSubmit={handleSubmit}
+                testid="pay-continue-cta"
+            >
+                Continue
+            </Button>
         </form>
     );
 };
 
-export default PaymentForm;
+export default Form;

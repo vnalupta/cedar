@@ -43,6 +43,7 @@ const List: React.FC = () => {
                     title="Payment Information"
                     showEdit={true}
                     onEditClick={handleEditClick}
+                    testid="pay-header-1"
                 />
 
                 <div
@@ -60,6 +61,7 @@ const List: React.FC = () => {
                     active={step === 2}
                     bullet="2"
                     title="Review and Pay"
+                    testid="pay-header-2"
                 />
 
                 {/* {step === 2 && ( */}
@@ -68,7 +70,7 @@ const List: React.FC = () => {
                 >
                     <p className="copy--medium">
                         You’re about to make a payment of{" "}
-                        <span className="strong">$600.00</span>
+                        <span className="strong" data-testid="pay-total">$600.00</span>
                     </p>
                     <p className={`${styles.paymentLabel} label`}>
                         Payment method
@@ -87,7 +89,7 @@ const List: React.FC = () => {
                             },
                         }}
                     >
-                        <Button buttonType="button">Pay $600</Button>
+                        <Button buttonType="button" testid="pay-submit-cta">Pay $600</Button>
                     </Link>
                 </div>
             </div>

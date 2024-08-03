@@ -8,10 +8,10 @@ const Sheet: React.FC = () => {
       <div className="box">
         <div className={styles.flexrow}>
             <p className="label">Total Due:</p>
-            <p className="copy--large">$600</p>
+            <p className="copy--large" data-testid="home-total">$600</p>
         </div>
-        <Link href="/pay">
-          <Button>Pay Total</Button>
+        <Link data-testid="home-cta" href="/pay">
+          <Button buttonType="button">Pay Total</Button>
         </Link>
       </div>
     </section>

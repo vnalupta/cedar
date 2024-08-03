@@ -6,14 +6,16 @@ const Button: React.FC<{
     onClick?: (e: React.FormEvent<HTMLFormElement>) => void,
     onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void,
     buttonType: 'submit' | 'reset' | 'button' | undefined;
-}> = ({ children, onClick, onSubmit, buttonType = 'button' }) => {
+    testid?: string
+}> = ({ children, onClick, onSubmit, buttonType = 'button', testid }) => {
 
     return (
         <button
             type={buttonType}
             className={styles.button}
             onSubmit={onSubmit}
-            onClick={onClick}>
+            onClick={onClick}
+            data-testid={testid}>
             {children}
         </button>
     )
