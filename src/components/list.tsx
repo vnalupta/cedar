@@ -9,6 +9,7 @@ import Link from "next/link";
 import ListHeader from "@/components/list-header";
 import Button from "@/components/button";
 import Form from "@/components/form";
+import Icon from "@/components/icon";
 
 const List: React.FC = () => {
     const [step, setStep] = useState(1);
@@ -60,6 +61,12 @@ const List: React.FC = () => {
                             You’re about to make a payment of{" "}
                             <span className="strong">$600.00</span>
                         </p>
+                        <p className={`${styles.paymentLabel} label`}>
+                            Payment method
+                        </p>
+                        <p className={styles.paymentDetails}>
+                            <span><Icon name="credit" /></span> Card ending in ••••4242
+                        </p>
                         <Link
                             href={{
                                 pathname: "/",
@@ -68,7 +75,7 @@ const List: React.FC = () => {
                                 },
                             }}
                         >
-                            <Button>Pay $600</Button>
+                            <Button buttonType="button">Pay $600</Button>
                         </Link>
                     </>
                 )}

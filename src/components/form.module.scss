@@ -1,5 +1,9 @@
 @import "../styles/tokens.module";
 
+.container {
+    margin-top: $basePadding * 5;
+}
+
 .button {
     display: block;
     width: 100%;

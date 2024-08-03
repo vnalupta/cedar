@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from "react";
 import styles from "./input.module.scss";
 
-import { useFormDispatch } from "./formcontext";
-import { match } from "assert";
+import { useFormDispatch } from "@/components/formcontext";
+import Icon from "@/components/icon";
 
 const Input: React.FC<{
     id: number;
@@ -58,7 +58,8 @@ const Input: React.FC<{
         <div
             className={`${styles.container} ${id === 1 ? styles.sibling : ""}`}
         >
-            <label htmlFor={name}>{label}</label>
+            <label className={styles.inputLabel} htmlFor={name}>{label}</label>
+            <div className={styles.inputWrapper}>
             <input
                 className={`
                     ${value.length > 1 && valid ? `${styles.valid}` : ``}
@@ -72,6 +73,13 @@ const Input: React.FC<{
                 onChange={inputChangeHandler}
                 required
             />
+            {value.length > 1 && (
+                <div className={styles.inputIconWrapper}>
+                    <Icon name={valid ? `valid` : 'invalid'} />
+                </div>
+                )
+            }
+            </div>
 
             {showRequiredError && (
                 <p className={styles.error}>This field is required</p>

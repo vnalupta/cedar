@@ -1,10 +1,10 @@
-import styles from "./paymentform.module.scss"
+import styles from "./form.module.scss"
 
 import Button from "@/components/button";
 import Input from "@/components/input";
 
 import { useForm } from "@/components/formcontext";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const PaymentForm: React.FC<{
     proceed: () => void;
@@ -12,7 +12,9 @@ const PaymentForm: React.FC<{
     const inputs = useForm();
     const [evaluated, setEvaluated] = useState(false);
 
-    function handleSubmit() {
+    function handleSubmit(e: ChangeEvent<HTMLInputElement>) {
+        e.preventDefault();
+
         setEvaluated(true);
         // @ts-ignore
         const formIsValid = inputs?.every((input) => input.valid);
@@ -28,7 +30,7 @@ const PaymentForm: React.FC<{
     }
 
     return (
-        <form>
+        <form className={styles.container}>
             {/* @ts-ignore */}
             {inputs.map((input, idx) => (
                 <Input
@@ -41,7 +43,7 @@ const PaymentForm: React.FC<{
                     showRequiredError={evaluated && input.value.length === 0}
                 />
             ))}
-            <Button onClick={handleSubmit}>Continue</Button>
+            <Button buttonType="submit" onClick={handleSubmit} onSubmit={handleSubmit}>Continue</Button>
         </form>
     );
 };

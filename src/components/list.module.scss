@@ -21,3 +21,17 @@
         border-bottom: 1px solid $mooncarrot;
     }
 }
+
+.paymentLabel {
+    margin-top: $basePadding * 9;
+    margin-bottom: 0;
+}
+.paymentDetails {
+    display: flex;
+    margin-top: $basePadding;
+    margin-bottom: $basePadding * 9;
+
+    & span {
+        margin-right: $basePadding * 2
+    }
+}

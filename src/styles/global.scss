@@ -4,9 +4,9 @@
 /*
  * FONT
  **/
- $fontSize: 16px;
- $fontFamily: Arial, sans-serif;
- $headingFontFamily: Georgia, serif;
+$fontSize: 16px;
+$fontFamily: Arial, sans-serif;
+$headingFontFamily: Georgia, serif;
 
 /*
  * GLOBALS
@@ -14,7 +14,8 @@
 body {
     overflow-x: hidden;
 }
-html, body {
+html,
+body {
     font-family: $fontFamily;
     font-size: $fontSize;
 }
@@ -34,10 +35,14 @@ main {
     flex-grow: 1;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     line-height: 1.15;
 }
-h1, h2 {
+h1,
+h2 {
     font-family: $headingFontFamily;
 }
 p {
@@ -50,18 +55,38 @@ p {
  * 1.125 Major Second scale
  */
 
-h1, .h1 { font-size: 3.052rem; }
-h2, .h2 { font-size: 1.75rem; }
-h3, .h3 { font-size: 1.602rem; }
-h4, .h4 { font-size: 1.3rem; }
-p, .body { font-size: 1rem; }
-b, .strong { font-weight: 700}
-a { color: $hyacinth }
+h1,
+.h1 {
+    font-size: 3.052rem;
+}
+h2,
+.h2 {
+    font-size: 1.75rem;
+}
+h3,
+.h3 {
+    font-size: 1.602rem;
+}
+h4,
+.h4 {
+    font-size: 1.3rem;
+}
+p,
+.body {
+    font-size: 1rem;
+}
+b,
+.strong {
+    font-weight: 700;
+}
+a {
+    color: $hyacinth;
+}
 
 /*
  * Utilities
  **/
- .box {
+.box {
     margin: 0 auto;
     text-align: center;
     max-width: 375px;
@@ -74,8 +99,9 @@ a { color: $hyacinth }
     font-weight: 700;
     color: $pansy;
 }
-label, .label {
+label,
+.label {
     color: $blacksage;
-    letter-spacing: .2px; // should this be REMs?
+    letter-spacing: 0.2px; // should this be REMs?
     font-weight: 700;
 }

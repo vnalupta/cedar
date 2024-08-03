@@ -8,6 +8,8 @@
 
 .error {
     color: $marigold;
+    transform: translateY(-16px);
+    margin: 0;
 }
 
 .input {
@@ -16,14 +18,21 @@
     border-radius: $basePadding * 2;
     border: 0 none;
     outline: 1px solid $hellebore;
-    margin: $basePadding * 2 0 0 0;
+    margin: 0 0 $basePadding * 5 0;
+}
+.inputLabel {
+    margin-bottom: $basePadding * 2;
 }
 
-.sibling {
-    $gap: $basePadding * 3;
-    width: calc(50% - $gap);
-    float: left;
-    margin-right: $gap;
+.inputWrapper {
+    display: flex;
+    position: relative;
+}
+
+.inputIconWrapper {
+    position: absolute;
+    right: $basePadding * 2;
+    top: $basePadding * 2;
 }
 
 .input.valid {
@@ -32,4 +41,11 @@
 
 .input.invalid {
     outline: 1px solid $marigold;
+}
+
+.sibling {
+    $gap: $basePadding * 3;
+    width: calc(50% - $gap);
+    float: left;
+    margin-right: $gap;
 }
